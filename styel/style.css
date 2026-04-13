@@ -13,10 +13,12 @@ body {
 .container {
   text-align: center;
   background: white;
-  padding: 40px;
+  padding: 20px;
   border-radius: 25px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
   animation: fadeIn 1s ease-in-out;
+  width: 800px;
+  height: 500px;
 }
 
 h1 {
@@ -41,16 +43,32 @@ button {
 #yes {
   background: #28a745;
   color: white;
+  margin-top: 50px;
+  width: 200px;
+  height: 80px;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 #yes:hover {
   transform: scale(1.1);
+}
+.love-card{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #28a745;
 }
 
 #no {
   background: #dc3545;
   color: white;
   position: absolute;
+  width: 200;
+  height: 80px;
+  margin-top: 50px;
+  font-size: 40px;
 }
 
 .hidden {

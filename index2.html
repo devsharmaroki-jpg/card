@@ -38,7 +38,7 @@ body{
 .envelope{
   position:relative;
   width:400px;
-  height:220px;
+  height:200px;
   background:#e5e7eb;
 }
 
@@ -68,7 +68,7 @@ body{
   color:black;
   font-weight:700;
   font-size:16px;
-  background-image: url(mypic.png);
+  background-image: url(myroki.png);
   background-size: cover;
   color: aliceblue;
 
@@ -125,6 +125,7 @@ body{
   white-space:nowrap;
   overflow:hidden;
   animation:typing 3s steps(30,end), blink 0.7s infinite;
+  margin-top: 4px;
 }
 
 @keyframes typing{
@@ -143,10 +144,16 @@ body{
   left:50%;
   transform:translate(-50%,-50%) scale(0.5);
   color:white;
-  font-size:40px;
+  font-size:80px;
   font-weight:bold;
   opacity:0;
   transition:0.8s;
+}
+.green{
+    color: red;
+}
+.pap{
+    margin-top: 20px;
 }
 
 #goodbye.show{
@@ -166,10 +173,10 @@ body{
     <div class="flap"></div>
 
     <div class="card">
-      <h2 class="typing">"Take care and forget me"❤️</h2>
-      <p>To my love,</p>
-      <p>You <span class="t">are my happiness</span> 💖</p>
-      <p><span class="tt">Forever </span>yours💕</p>
+      <h2 class="typing">"Take care <span class="green">and</span> forget <span class="green">me</span> "❤️</h2>
+      <p class="pap">To my <span class="green">love</span>,</p>
+      <p>You <span class="green">are my happiness</span> 💖</p>
+      <p> <span class="green">Forever yours</span>💕</p>
     </div>
   </div>
 
@@ -206,7 +213,7 @@ function openLetter(el){
   setTimeout(()=>{
     el.classList.add("hide");
     document.getElementById("goodbye").classList.add("show");
-  },6000);
+  },10000);
 
 }
 </script>

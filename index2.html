@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Letter 💌</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0f172a;
+  font-family:sans-serif;
+  overflow:hidden;
+}
+
+/* wrapper */
+.wrapper{
+  position:relative;
+  cursor:pointer;
+  transition:0.6s;
+}
+
+/* top text */
+.top-text{
+  position:absolute;
+  top:-60px;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:18px;
+  transition:0.6s;
+}
+
+/* envelope */
+.envelope{
+  position:relative;
+  width:400px;
+  height:220px;
+  background:#e5e7eb;
+}
+
+/* flap */
+.flap{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#d1d5db;
+  clip-path: polygon(0 0, 50% 50%, 100% 0);
+  transform-origin:top;
+  transition:0.6s;
+  z-index:3;
+}
+
+/* card */
+.card{
+  position:absolute;
+  width:90%;
+  height:200px;
+  background:white;
+  top:4px;
+  left:5%;
+  padding:10px;
+  box-sizing:border-box;
+  text-align:center;
+  color:black;
+  font-weight:700;
+  font-size:16px;
+  background-image: url(mypic.png);
+  background-size: cover;
+  color: aliceblue;
+
+  transform:translateY(100px);
+  opacity:0;
+  transition:0.7s;
+  z-index:5;
+}
+/* card */
+.tt{
+    color: black;
+}
+
+/* open state */
+.wrapper.open .flap{
+  transform:rotateX(180deg);
+  opacity:0;
+}
+
+.wrapper.open .card{
+  transform:translateY(-140px);
+  opacity:1;
+}
+
+.wrapper.open .top-text{
+  opacity:0;
+}
+
+/* fade */
+.wrapper.hide{
+  opacity:0;
+  transform:scale(0.8);
+  transition:0.8s;
+}
+
+/* hearts */
+.heart{
+  position:fixed;
+  color:pink;
+  font-size:20px;
+  animation:float 4s linear forwards;
+  pointer-events:none;
+}
+
+@keyframes float{
+  0%{transform:translateY(0) scale(1); opacity:1;}
+  100%{transform:translateY(-600px) scale(1.5); opacity:0;}
+}
+
+/* typing */
+.typing{
+  display:inline-block;
+  border-right:2px solid black;
+  white-space:nowrap;
+  overflow:hidden;
+  animation:typing 3s steps(30,end), blink 0.7s infinite;
+}
+
+@keyframes typing{
+  from{width:0;}
+  to{width:100%;}
+}
+
+@keyframes blink{
+  50%{border-color:transparent;}
+}
+
+/* GOOD BYE */
+#goodbye{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0.5);
+  color:white;
+  font-size:40px;
+  font-weight:bold;
+  opacity:0;
+  transition:0.8s;
+}
+
+#goodbye.show{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper" onclick="openLetter(this)">
+
+  <div class="top-text">💌 This letter is from Roki ❤️</div>
+
+  <div class="envelope">
+    <div class="flap"></div>
+
+    <div class="card">
+      <h2 class="typing">"Take care and forget me"❤️</h2>
+      <p>To my love,</p>
+      <p>You <span class="t">are my happiness</span> 💖</p>
+      <p><span class="tt">Forever </span>yours💕</p>
+    </div>
+  </div>
+
+</div>
+
+<div id="goodbye">Good Bye 💔</div>
+
+<audio id="openSound" src="goodbye.m4a"></audio>
+
+<script>
+function openLetter(el){
+
+  if(el.classList.contains("open")) return;
+
+  el.classList.add("open");
+
+  // sound
+  document.getElementById("openSound").play();
+
+  // hearts
+  for(let i=0;i<15;i++){
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.top = "80vh";
+    heart.style.fontSize = (15+Math.random()*20)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=> heart.remove(),4000);
+  }
+
+  // close + goodbye
+  setTimeout(()=>{
+    el.classList.add("hide");
+    document.getElementById("goodbye").classList.add("show");
+  },6000);
+
+}
+</script>
+
+</body>
+</html>
